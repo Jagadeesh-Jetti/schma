@@ -1,0 +1,47 @@
+.class-container {
+    width: 80%;
+    margin: auto;
+  }
+
+  .header {
+    background-color: #3498db;
+    /* padding: 10px; */
+    text-align: center;
+    color: rgb(244, 228, 228);
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .filters {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 6px;
+  }
+  
+  .filters select {
+    padding: 6px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .class-display {
+    margin-top: 20px;
+  }
+  
+  .table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  .table th,
+  .table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .table th {
+    background-color: #f2f2f2;
+  }
+  
