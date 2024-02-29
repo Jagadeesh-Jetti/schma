@@ -1,0 +1,60 @@
+.teachers-container {
+    width: 80%;
+    margin: auto;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .title {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .add-teacher a {
+    text-decoration: none;
+    padding: 8px 16px;
+    background-color: #4caf50;
+    color: white;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+  }
+  
+  .add-teacher a:hover {
+    background-color: #45a049;
+  }
+  
+  .teachers-table {
+    width: 100%;
+  }
+  
+  .table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  .table th, .table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .table th {
+    background-color: #f2f2f2;
+  }
+  
+  .teacher-link {
+    text-decoration: none;
+    color: #3498db;
+    font-weight: bold;
+  }
+  
+  .teacher-link:hover {
+    text-decoration: underline;
+    color: #2568a3;
+  }
+  
