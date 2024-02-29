@@ -39,7 +39,7 @@ export const updateStudent = createAsyncThunk(
   }
 );
 
-const deleteStudent = createAsyncThunk("delete/student", async (id) => {
+export const deleteStudent = createAsyncThunk("delete/student", async (id) => {
   try {
     const response = await axios.delete(`${url}/${id}`);
     return response.data;
@@ -67,61 +67,63 @@ export const studentSlice = createSlice({
       state.filter = action.payload;
     },
   },
-  extraReducers: {
-    [fetchStudents.pending]: (state) => {
-      state.status = "Loading";
-    },
-    [fetchStudents.fulfilled]: (state, action) => {
-      state.status = "Success";
-      state.students = action.payload;
-    },
-    [fetchStudents.rejected]: (state, action) => {
-      state.status = "error";
-      state.error = action.error.message;
-    },
-    [addNewStudent.pending]: (state) => {
-      state.status = "Loading";
-    },
-    [addNewStudent.fulfilled]: (state, action) => {
-      state.status = "success";
-      state.students.push(action.payload);
-    },
-    [addNewStudent.rejected]: (state, action) => {
-      state.status = "error";
-      state.error = action.error.message;
-    },
-    [updateStudent.pending]: (state) => {
-      state.status = "loading";
-    },
-    [updateStudent.fulfilled]: (state, action) => {
-      state.status = "success";
-      const updatedStudent = action.payload;
-      const index = state.students.findIndex(
-        (student) => student._id === updatedStudent._id
-      );
-      if (index !== -1) {
-        state.students[index] = updatedStudent;
-      }
-    },
-    [updateStudent.rejected]: (state, action) => {
-      state.status = "error";
-      state.error = action.error.message;
-    },
-    [deleteStudent.pending]: (state) => {
-      state.status = "loading";
-    },
-    [deleteStudent.fulfilled]: (state, action) => {
-      state.status = "success";
-      const deletedStudentId = action.payload._id;
-      state.students = state.students.filter(
-        (student) => student._id !== deletedStudentId
-      );
-    },
-    [deleteStudent.rejected]: (state, action) => {
-      state.status = "error";
-      state.error = action.error.message;
-    },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchStudents.pending, (state) => {
+        state.status = "Loading";
+      })
+      .addCase(fetchStudents.fulfilled, (state, action) => {
+        state.status = "Success";
+        state.students = action.payload;
+      })
+      .addCase(fetchStudents.rejected, (state, action) => {
+        state.status = "error";
+        state.error = action.error.message;
+      })
+      .addCase(addNewStudent.pending, (state) => {
+        state.status = "Loading";
+      })
+      .addCase(addNewStudent.fulfilled, (state, action) => {
+        state.status = "success";
+        state.students.push(action.payload);
+      })
+      .addCase(addNewStudent.rejected, (state, action) => {
+        state.status = "error";
+        state.error = action.error.message;
+      })
+      .addCase(updateStudent.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(updateStudent.fulfilled, (state, action) => {
+        state.status = "success";
+        const updatedStudent = action.payload;
+        const index = state.students.findIndex(
+          (student) => student._id === updatedStudent._id
+        );
+        if (index !== -1) {
+          state.students[index] = updatedStudent;
+        }
+      })
+      .addCase(updateStudent.rejected, (state, action) => {
+        state.status = "error";
+        state.error = action.error.message;
+      })
+      .addCase(deleteStudent.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(deleteStudent.fulfilled, (state, action) => {
+        state.status = "success";
+        const deletedStudentId = action.payload._id;
+        state.students = state.students.filter(
+          (student) => student._id !== deletedStudentId
+        );
+      })
+      .addCase(deleteStudent.rejected, (state, action) => {
+        state.status = "error";
+        state.error = action.error.message;
+      });
   },
 });
 
 export default studentSlice.reducer;
+export const { setFilter, setSortBy } = studentSlice.actions;
