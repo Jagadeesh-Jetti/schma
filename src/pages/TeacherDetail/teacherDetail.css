@@ -1,0 +1,32 @@
+.teacher-detail {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .teacher-detail h2 {
+    color: #333;
+    margin-bottom: 16px;
+  }
+  
+  .teacher-detail p {
+    margin: 8px 0;
+  }
+  
+  .teacher-detail .actions {
+    margin-top: 16px;
+  }
+  
+  .teacher-detail button {
+    padding: 8px 16px;
+    margin-right: 8px;
+    cursor: pointer;
+  }
+  
+  .teacher-detail a {
+    text-decoration: none;
+  }
+  
